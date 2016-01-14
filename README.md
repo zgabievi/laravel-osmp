@@ -14,6 +14,7 @@ Georgian OSMP System Payment for [Laravel 5.*](http://laravel.com/)
     - [Laravel](#laravel)
 - [Usage](#usage)
 - [Protocol](#protocol)
+- [Codes](#codes)
 - [Config](#config)
 - [License](#license)
 
@@ -100,6 +101,19 @@ This is the protocol for provider:
 - `http(s)://yoursite.com/billing/?command=pay&txn_id=1234567&account=000000&sum=10.45`
 
 Command: check/pay are required
+
+## Codes
+
+| Key | Description                        |
+|-----|------------------------------------|
+| 0   | Operation was successful           |
+| 1   | Server Timeout                     |
+| 4   | Wrong format of the user's account |
+| 5   | User does not exist                |
+| 7   | Payments are prohibited            |
+| 215 | Transaction duplication            |
+| 275 | Wrong amount                       |
+| 300 | Fatal Error                        |
 
 ## Config
 
