@@ -5,11 +5,6 @@ namespace Gabievi\OSMP;
 class OSMP
 {
 	
-	public function __construct()
-	{
-
-	}
-	
 	/**
 	 * @return bool|mixed
 	 */
