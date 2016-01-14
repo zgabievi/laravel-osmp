@@ -6,7 +6,7 @@
 [![Total Downloads](https://poser.pugx.org/zgabievi/OSMP/d/total.png)](https://packagist.org/packages/zgabievi/OSMP)
 [![License](https://poser.pugx.org/zgabievi/OSMP/license)](https://packagist.org/packages/zgabievi/OSMP)
 
-Promotional Codes Generator for [Laravel 5.*](http://laravel.com/)
+Georgian OSMP System Payment for [Laravel 5.*](http://laravel.com/)
 
 ## Table of Contents
 - [Installation](#installation)
@@ -76,7 +76,7 @@ Flashed session data will be used in XML response as additional information
 
 ## Config
 
-Publish Promocodes config file using command:
+Publish OSMP config file using command:
 
 ```
 php artisan vendor:publish
@@ -86,7 +86,7 @@ Created file `config\osmp.php`. Inside you can change configuration as you wish.
 
 ## License
 
-Promocodes is an open-sourced laravel package licensed under the MIT license
+OSMP is an open-sourced laravel package licensed under the MIT license
 
 ## TODO
 - [ ] Create tests
