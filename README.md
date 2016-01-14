@@ -1,6 +1,6 @@
 # OSMP
 
-[![PR0M0C0D35](http://i.imgsafe.org/34a2e47.jpg)](https://github.com/zgabievi/OSMP)
+[![OSMP](http://i.imgsafe.org/34a2e47.jpg)](https://github.com/zgabievi/OSMP)
 
 [![Latest Stable Version](https://poser.pugx.org/zgabievi/OSMP/version.png)](https://packagist.org/packages/zgabievi/OSMP)
 [![Total Downloads](https://poser.pugx.org/zgabievi/OSMP/d/total.png)](https://packagist.org/packages/zgabievi/OSMP)
@@ -13,6 +13,7 @@ Georgian OSMP System Payment for [Laravel 5.*](http://laravel.com/)
     - [Composer](#composer)
     - [Laravel](#laravel)
 - [Usage](#usage)
+- [Protocol](#protocol)
 - [Config](#config)
 - [License](#license)
 
@@ -73,6 +74,15 @@ Event::listen('osmp.*', function (...$args) {
 ```
 
 Flashed session data will be used in XML response as additional information
+
+## Protocol
+
+This is the protocol for provider:
+
+- `http(s)://yoursite.com/billing/?command=check&account=000000`
+- `http(s)://yoursite.com/billing/?command=pay&txn_id=1234567&account=000000&sum=10.45`
+
+Command: check/pay are required
 
 ## Config
 
