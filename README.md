@@ -75,6 +75,23 @@ Event::listen('osmp.*', function (...$args) {
 
 Flashed session data will be used in XML response as additional information
 
+You can call `Response` early to show some kind of error.
+For example:
+
+```php
+return OSMP::Response(5);
+```
+
+This will output:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<result>5</result>
+	<comment>User does not exist</comment>
+</response>
+```
+
 ## Protocol
 
 This is the protocol for provider:
