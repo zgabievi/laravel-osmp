@@ -13,6 +13,7 @@ Georgian OSMP System Payment for [Laravel 5.*](http://laravel.com/)
     - [Composer](#composer)
     - [Laravel](#laravel)
 - [Usage](#usage)
+- [Protocol](#protocol)
 - [Config](#config)
 - [License](#license)
 
@@ -73,6 +74,15 @@ Event::listen('osmp.*', function (...$args) {
 ```
 
 Flashed session data will be used in XML response as additional information
+
+## Protocol
+
+This is the protocol for provider:
+
+```
+http(s)://yoursite.com/billing/?command=check&account=000000
+http(s)://yoursite.com/billing/?command=pay&txn_id=1234567&account=000000&sum=10.45
+```
 
 ## Config
 
