@@ -1,24 +1,92 @@
 # OSMP
 
-`routes.php`
+[![PR0M0C0D35](http://i.imgsafe.org/34a2e47.jpg)](https://github.com/zgabievi/OSMP)
+
+[![Latest Stable Version](https://poser.pugx.org/zgabievi/OSMP/version.png)](https://packagist.org/packages/zgabievi/OSMP)
+[![Total Downloads](https://poser.pugx.org/zgabievi/OSMP/d/total.png)](https://packagist.org/packages/zgabievi/OSMP)
+[![License](https://poser.pugx.org/zgabievi/OSMP/license)](https://packagist.org/packages/zgabievi/OSMP)
+
+Promotional Codes Generator for [Laravel 5.*](http://laravel.com/)
+
+## Table of Contents
+- [Installation](#installation)
+    - [Composer](#composer)
+    - [Laravel](#laravel)
+- [Usage](#usage)
+- [Config](#config)
+- [License](#license)
+
+## Installation
+
+### Composer
+
+Run composer command in your terminal.
+
+    composer require zgabievi/osmp
+
+### Laravel
+
+Open `config/app.php` and find the `providers` key. Add `OSMPServiceProvider` to the array.
+
+```php
+Gabievi\OSMP\OSMPServiceProvider::class
+```
+
+Find the `aliases` key and add `Facade` to the array. 
+
+```php
+'OSMP' => Gabievi\OSMP\OSMPFacade::class
+```
+
+## Usage
+
+Create route in your `routes.php`
 
 ```php
 Route::get('billing', function () {
-	Event::listen('osmp.*', function (...$args) {
-		if ($args[0] == 'check') {
-			session()->flash('osmp.check', [
-				'fullname' => 'Zura Gabievi',
-				'account' => '000000'
-			]);
-		} else {
-			session()->flash('osmp.pay', [
-				'fullname' => 'John Doe',
-				'account' => '000001'
-			]);
-		}
-	});
-
+	// LISTENERS
 
 	return OSMP::init();
 })->middleware('osmp.auth');
 ```
+
+Middleware is required if you want to make Basic Authentication
+
+In place of `// LISTENERS` you can write `osmp` listeners:
+
+```php
+Event::listen('osmp.*', function (...$args) {
+	if ($args[0] == 'check') {
+		// flash session data for check operation
+		session()->flash('osmp.check', [
+			'fullname' => 'Zura Gabievi',
+			'account' => '000000'
+		]);
+	} else {
+		// flash session data for pay operation
+		session()->flash('osmp.pay', [
+			'fullname' => 'John Doe',
+			'account' => '000001'
+		]);
+	}
+});
+```
+
+Flashed session data will be used in XML response as additional information
+
+## Config
+
+Publish Promocodes config file using command:
+
+```
+php artisan vendor:publish
+```
+
+Created file `config\osmp.php`. Inside you can change configuration as you wish.
+
+## License
+
+Promocodes is an open-sourced laravel package licensed under the MIT license
+
+## TODO
+- [ ] Create tests
