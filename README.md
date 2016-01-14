@@ -1,6 +1,6 @@
 # OSMP
 
-[![PR0M0C0D35](http://i.imgsafe.org/34a2e47.jpg)](https://github.com/zgabievi/OSMP)
+[![OSMP](http://i.imgsafe.org/34a2e47.jpg)](https://github.com/zgabievi/OSMP)
 
 [![Latest Stable Version](https://poser.pugx.org/zgabievi/OSMP/version.png)](https://packagist.org/packages/zgabievi/OSMP)
 [![Total Downloads](https://poser.pugx.org/zgabievi/OSMP/d/total.png)](https://packagist.org/packages/zgabievi/OSMP)
