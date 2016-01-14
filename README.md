@@ -79,10 +79,10 @@ Flashed session data will be used in XML response as additional information
 
 This is the protocol for provider:
 
-```
-http(s)://yoursite.com/billing/?command=check&account=000000
-http(s)://yoursite.com/billing/?command=pay&txn_id=1234567&account=000000&sum=10.45
-```
+- `http(s)://yoursite.com/billing/?command=check&account=000000`
+- `http(s)://yoursite.com/billing/?command=pay&txn_id=1234567&account=000000&sum=10.45`
+
+Command: check/pay are required
 
 ## Config
 
