@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>OSMP by zgabievi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">OSMP</h1>
+      <h2 class="project-tagline">Georgian OSMP System Payment for Laravel 5.*</h2>
+      <a href="https://github.com/zgabievi/OSMP" class="btn">View on GitHub</a>
+      <a href="https://github.com/zgabievi/OSMP/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/zgabievi/OSMP/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="osmp" class="anchor" href="#osmp" aria-hidden="true"><span class="octicon octicon-link"></span></a>OSMP</h1>
+
+<p><a href="https://github.com/zgabievi/OSMP"><img src="http://i.imgsafe.org/34a2e47.jpg" alt="OSMP"></a></p>
+
+<p><a href="https://packagist.org/packages/zgabievi/OSMP"><img src="https://poser.pugx.org/zgabievi/OSMP/version.png" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/zgabievi/OSMP"><img src="https://poser.pugx.org/zgabievi/OSMP/d/total.png" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/zgabievi/OSMP"><img src="https://poser.pugx.org/zgabievi/OSMP/license" alt="License"></a></p>
+
+<p>Georgian OSMP System Payment for <a href="http://laravel.com/">Laravel 5.*</a></p>
+
+<h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h2>
+
+<ul>
+<li>
+<a href="#installation">Installation</a>
+
+<ul>
+<li><a href="#composer">Composer</a></li>
+<li><a href="#laravel">Laravel</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#protocol">Protocol</a></li>
+<li><a href="#codes">Codes</a></li>
+<li><a href="#config">Config</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="composer" class="anchor" href="#composer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Composer</h3>
+
+<p>Run composer command in your terminal.</p>
+
+<pre><code>composer require zgabievi/osmp
+</code></pre>
+
+<h3>
+<a id="laravel" class="anchor" href="#laravel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Laravel</h3>
+
+<p>Open <code>config/app.php</code> and find the <code>providers</code> key. Add <code>OSMPServiceProvider</code> to the array.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">Gabievi\OSMP\</span><span class="pl-c1">OSMPServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span></span></pre></div>
+
+<p>Find the <code>aliases</code> key and add <code>Facade</code> to the array. </p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>OSMP<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">Gabievi\OSMP\</span><span class="pl-c1">OSMPFacade</span><span class="pl-k">::</span><span class="pl-c1">class</span></span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Create route in your <code>routes.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">Route</span><span class="pl-k">::</span>get(<span class="pl-s"><span class="pl-pds">'</span>billing<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {</span>
+<span class="pl-s1">    <span class="pl-c">// LISTENERS</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">return</span> <span class="pl-c1">OSMP</span><span class="pl-k">::</span>init();</span>
+<span class="pl-s1">})<span class="pl-k">-&gt;</span>middleware(<span class="pl-s"><span class="pl-pds">'</span>osmp.auth<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<p>Middleware is required if you want to make Basic Authentication</p>
+
+<p>In place of <code>// LISTENERS</code> you can write <code>osmp</code> listeners:</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">Event</span><span class="pl-k">::</span>listen(<span class="pl-s"><span class="pl-pds">'</span>osmp.*<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (...<span class="pl-smi">$args</span>) {</span>
+<span class="pl-s1">    <span class="pl-k">if</span> (<span class="pl-smi">$args</span>[<span class="pl-c1">0</span>] <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>check<span class="pl-pds">'</span></span>) {</span>
+<span class="pl-s1">        <span class="pl-c">// flash session data for check operation</span></span>
+<span class="pl-s1">        session()<span class="pl-k">-&gt;</span>flash(<span class="pl-s"><span class="pl-pds">'</span>osmp.check<span class="pl-pds">'</span></span>, [</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>fullname<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Zura Gabievi<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>account<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>000000<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ]);</span>
+<span class="pl-s1">    } <span class="pl-k">else</span> {</span>
+<span class="pl-s1">        <span class="pl-c">// flash session data for pay operation</span></span>
+<span class="pl-s1">        session()<span class="pl-k">-&gt;</span>flash(<span class="pl-s"><span class="pl-pds">'</span>osmp.pay<span class="pl-pds">'</span></span>, [</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>fullname<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>John Doe<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>account<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>000001<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ]);</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">});</span></pre></div>
+
+<p>Flashed session data will be used in XML response as additional information</p>
+
+<p>You can call <code>Response</code> early to show some kind of error.
+For example:</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">return</span> <span class="pl-c1">OSMP</span><span class="pl-k">::</span>Response(<span class="pl-c1">5</span>);</span></pre></div>
+
+<p>This will output:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>?&gt;
+&lt;<span class="pl-ent">response</span>&gt;
+    &lt;<span class="pl-ent">result</span>&gt;5&lt;/<span class="pl-ent">result</span>&gt;
+    &lt;<span class="pl-ent">comment</span>&gt;User does not exist&lt;/<span class="pl-ent">comment</span>&gt;
+&lt;/<span class="pl-ent">response</span>&gt;</pre></div>
+
+<h2>
+<a id="protocol" class="anchor" href="#protocol" aria-hidden="true"><span class="octicon octicon-link"></span></a>Protocol</h2>
+
+<p>This is the protocol for provider:</p>
+
+<ul>
+<li><code>http(s)://yoursite.com/billing/?command=check&amp;account=000000</code></li>
+<li><code>http(s)://yoursite.com/billing/?command=pay&amp;txn_id=1234567&amp;account=000000&amp;sum=10.45</code></li>
+</ul>
+
+<p>Command: check/pay are required</p>
+
+<h2>
+<a id="codes" class="anchor" href="#codes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Codes</h2>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Operation was successful</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Server Timeout</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Wrong format of the user's account</td>
+</tr>
+<tr>
+<td>5</td>
+<td>User does not exist</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Payments are prohibited</td>
+</tr>
+<tr>
+<td>215</td>
+<td>Transaction duplication</td>
+</tr>
+<tr>
+<td>275</td>
+<td>Wrong amount</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Fatal Error</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="config" class="anchor" href="#config" aria-hidden="true"><span class="octicon octicon-link"></span></a>Config</h2>
+
+<p>Publish OSMP config file using command:</p>
+
+<pre><code>php artisan vendor:publish
+</code></pre>
+
+<p>Created file <code>config\osmp.php</code>. Inside you can change configuration as you wish.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>OSMP is an open-sourced laravel package licensed under the MIT license</p>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>[ ] Create tests</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/zgabievi/OSMP">OSMP</a> is maintained by <a href="https://github.com/zgabievi">zgabievi</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
