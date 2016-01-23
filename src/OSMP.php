@@ -35,7 +35,7 @@ class OSMP
 		event('osmp.check', request()->all());
 		
 		// success
-		return $this->Response(0, session()->get('osmp.check', []));
+		return $this->Response(session('osmp.result'), session('osmp.data', []));
 	}
 	
 	/**
@@ -47,7 +47,7 @@ class OSMP
 		event('osmp.pay', request()->all());
 		
 		// success
-		return $this->Response(0, session()->get('osmp.pay', []));
+		return $this->Response(session('osmp.result'), session('osmp.data', []));
 	}
 	
 	/**
