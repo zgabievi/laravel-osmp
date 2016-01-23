@@ -1,4 +1,4 @@
-{!! '<?xml version="1.0" encoding="UTF-8"?>' !!}
+<?php print '<?xml version="1.0" encoding="UTF-8" ?>'; ?>
 <response>
     <result>{!! $result !!}</result>
     @if(count($info) > 0)
