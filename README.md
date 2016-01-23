@@ -64,15 +64,21 @@ In place of `// LISTENERS` you can write `osmp` listeners:
 Event::listen('osmp.*', function (...$args) {
 	if ($args[0] == 'check') {
 		// flash session data for check operation
-		session()->flash('osmp.check', [
-			'fullname' => 'Zura Gabievi',
-			'account' => '000000'
+		session()->flash('osmp', [
+			'result' => 0,
+			'data' => [
+				'fullname' => 'Zura Gabievi',
+				'account' => '000000'
+			]
 		]);
 	} else {
 		// flash session data for pay operation
-		session()->flash('osmp.pay', [
-			'fullname' => 'John Doe',
-			'account' => '000001'
+		session()->flash('osmp', [
+			'result' => 0,
+			'data' => [
+				'fullname' => 'John Doe',
+				'account' => '000001'
+			]
 		]);
 	}
 });
