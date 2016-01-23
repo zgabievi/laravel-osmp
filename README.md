@@ -42,6 +42,9 @@ Find the `aliases` key and add `Facade` to the array.
 
 ## Usage
 
+Attention! You need to disable `short_open_tag` in your `php.ini` file, to use xml response;
+Follow this url for more information: [ini.short-open-tag](http://php.net/manual/en/ini.core.php#ini.short-open-tag)
+
 Create route in your `routes.php`
 
 ```php
