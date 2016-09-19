@@ -1,12 +1,12 @@
-# OSMP
+# laravel-osmp
 
-[![OSMP](https://i.imgsafe.org/fbbe2a3dfd.png)](https://github.com/zgabievi/OSMP)
+> Some great updates are comming soon...
 
-[![Latest Stable Version](https://poser.pugx.org/zgabievi/OSMP/version.png)](https://packagist.org/packages/zgabievi/OSMP)
-[![Total Downloads](https://poser.pugx.org/zgabievi/OSMP/d/total.png)](https://packagist.org/packages/zgabievi/OSMP)
-[![License](https://poser.pugx.org/zgabievi/OSMP/license)](https://packagist.org/packages/zgabievi/OSMP)
+[![Latest Stable Version](https://poser.pugx.org/zgabievi/osmp/version?format=flat-square)](https://packagist.org/packages/zgabievi/osmp) [![Total Downloads](https://poser.pugx.org/zgabievi/osmp/d/total?format=flat-square)](https://packagist.org/packages/zgabievi/osmp) [![License](https://poser.pugx.org/zgabievi/osmp/license?format=flat-square)](https://packagist.org/packages/zgabievi/osmp)
 
-Georgian OSMP System Payment for [Laravel 5.*](http://laravel.com/)
+| OSMP       |     |
+|:----------:|:----|
+| [![OSMP](https://i.imgsafe.org/fbbe2a3dfd.png)](https://github.com/zgabievi/laravel-osmp) | OSMP payment system integration for [Laravel 5.*](http://laravel.com/). Trying to make it perfect, easy to use and awesome package :tada: Pull requests are welcome. |
 
 ## Table of Contents
 - [Installation](#installation)
@@ -138,7 +138,11 @@ Created file `config\osmp.php`. Inside you can change configuration as you wish.
 
 ## License
 
-OSMP is an open-sourced laravel package licensed under the MIT license
+laravel-osmp is licensed under a  [MIT License](https://github.com/zgabievi/laravel-osmp/blob/master/LICENSE).
 
 ## TODO
-- [ ] Create tests
+- [ ] Create tests for checking funtionality
+- [ ] Create separated file for response codes
+- [ ] Make artisan command that will create reponse codes php file
+- [ ] Make artisan command that will register routes for user
+- [ ] Make OSMP object more Model like
